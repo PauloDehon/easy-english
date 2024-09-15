@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Verbs Game</title>
+    <style>
+      body {
+        background-color: #b3e5fc;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+      }
+      h1 {
+        color: #0277bd;
+      }
+      .game-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+      }
+      .verb-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px;
+        max-width: 400px;
+        text-align: center;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+      }
+      button {
+        background-color: #0288d1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #01579b;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Learn English Verbs!</h1>
+    <div class="game-container">
+      <div class="verb-card">
+        <img id="verbImage" src="verb_images/walk.png" alt="Verb Illustration">
+        <h2 id="verbName">Walk</h2>
+        <audio id="verbAudio" src="audio/walk.mp3"></audio>
+      </div>
+      <button onclick="nextVerb()">Next Verb</button>
+    </div>
+
+    <script>
+      const verbs = [
+        { name: 'Walk', image: 'verb_images/walk.png', audio: 'audio/walk.mp3' },
+        { name: 'Run', image: 'verb_images/run.png', audio: 'audio/run.mp3' },
+        { name: 'Jump', image: 'verb_images/jump.png', audio: 'audio/jump.mp3' },
+         { name: 'Eat', image: 'verb_images/eat.png', audio: 'audio/eat.mp3' },
+        { name: 'Drink', image: 'verb_images/drink.png', audio: 'audio/drink.mp3' },
+        { name: 'Sleep', image: 'verb_images/sleep.png', audio: 'audio/sleep.mp3' },
+        { name: 'Read', image: 'verb_images/read.png', audio: 'audio/read.mp3' },
+        { name: 'Write', image: 'verb_images/write.png', audio: 'audio/write.mp3' },
+        { name: 'Play', image: 'verb_images/play.png', audio: 'audio/play.mp3' },
+        { name: 'Swim', image : 'verb_images/swim.png', audio: 'audio/swim.mp3' },
+        { name: 'Dance', image: 'verb_images/dance.png', audio: 'audio/dance.mp3' },
+        { name: 'Sing', image: 'verb_images/sing.png', audio: 'audio/sing.mp3' },
+        // Continue adding up to 50 verbs
+      ];
+
+      let currentVerbIndex = 0;
+
+      function nextVerb() {
+        currentVerbIndex = (currentVerbIndex + 1) % verbs.length;
+        document.getElementById('verbName').innerText = verbs[currentVerbIndex].name;
+        document.getElementById('verbImage').src = verbs[currentVerbIndex].image;
+        document.getElementById('verbAudio').src = verbs[currentVerbIndex].audio;
+        playAudio();
+      }
+
+      function playAudio() {
+        const audioElement = document.getElementById('verbAudio');
+        audioElement.play();
+      }
+    </script>
+
+  </body>
+  </html>
